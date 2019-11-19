@@ -4,7 +4,7 @@ import './screens/meal_detail_screen.dart';
 import './screens/category_meals_screen.dart';
 import './screens/categories_screen.dart';
 import './screens/tabs_screen.dart';
-import './screens/filters_sreen.dart';
+import './screens/filters_screen.dart';
 import './dummy_data.dart';
 import './models/meal.dart';
 

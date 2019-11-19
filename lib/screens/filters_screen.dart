@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/widgets/main_drawer.dart';
+
+import '../widgets/main_drawer.dart';
 
 class FiltersScreen extends StatefulWidget {
   static const routeName = '/filters';
@@ -28,12 +29,18 @@ class _FiltersScreenState extends State<FiltersScreen> {
     super.initState();
   }
 
-  Widget _buildSwitchListTile(String title, String description,
-      bool currentValue, Function updateValue) {
+  Widget _buildSwitchListTile(
+    String title,
+    String description,
+    bool currentValue,
+    Function updateValue,
+  ) {
     return SwitchListTile(
       title: Text(title),
-      subtitle: Text(description),
       value: currentValue,
+      subtitle: Text(
+        description,
+      ),
       onChanged: updateValue,
     );
   }
@@ -64,7 +71,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
           Container(
             padding: EdgeInsets.all(20),
             child: Text(
-              'Adjust your meal selection',
+              'Adjust your meal selection.',
               style: Theme.of(context).textTheme.title,
             ),
           ),
@@ -79,6 +86,18 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     setState(
                       () {
                         _glutenFree = newValue;
+                      },
+                    );
+                  },
+                ),
+                _buildSwitchListTile(
+                  'Lactose-free',
+                  'Only include lactose-free meals.',
+                  _lactoseFree,
+                  (newValue) {
+                    setState(
+                      () {
+                        _lactoseFree = newValue;
                       },
                     );
                   },
@@ -106,19 +125,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                       },
                     );
                   },
-                ),
-                _buildSwitchListTile(
-                  'Lactose-free',
-                  'Only include lactose-free meals.',
-                  _lactoseFree,
-                  (newValue) {
-                    setState(
-                      () {
-                        _lactoseFree = newValue;
-                      },
-                    );
-                  },
-                ),
+                )
               ],
             ),
           ),
